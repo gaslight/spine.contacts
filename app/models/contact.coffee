@@ -3,7 +3,7 @@ Spine = require('spine')
 class Contact extends Spine.Model
   @configure 'Contact', 'name', 'email'
   
-  @extend Spine.Model.Local
+  @extend Spine.Model.Ajax
   
   @filter: (query) ->
     return @all() unless query
