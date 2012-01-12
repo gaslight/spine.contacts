@@ -20,4 +20,5 @@ exports.mountModel = (app, model) ->
   app.post "/#{pluralClassName.toLowerCase()}", routes.create
   app.get "/#{pluralClassName.toLowerCase()}/:#{model.className.toLowerCase()}", routes.show
   app.put "/#{pluralClassName.toLowerCase()}/:#{model.className.toLowerCase()}", routes.update
+  app.del "/#{pluralClassName.toLowerCase()}/:#{model.className.toLowerCase()}", routes.destroy
     
