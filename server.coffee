@@ -1,14 +1,6 @@
 
 mongoose = require("mongoose")
 
-# setup the schema, this could probably be inferred
-# from the spine model eventually
-ContactSchema = new mongoose.Schema
-  name: String
-  email: String
-
-Contact = mongoose.model "Contact", ContactSchema
-
 # hardcoded for now
 mongoose.connect('mongodb://localhost/contacts')
 
@@ -28,11 +20,11 @@ app.use(express.static("./public"))
 mongooseRest = require("mongoose-rest")
 mongooseRest.use(app, mongoose)
 
-# mount the restful routes from mongoose-rest on our server
-app.get "/contacts.:format?", mongooseRest.routes().Contacts.index
-app.post "/contacts", mongooseRest.routes().Contacts.create
-app.get "/contacts/:contact", mongooseRest.routes().Contacts.show
-app.put "/contacts/:contact", mongooseRest.routes().Contacts.update
+require "spine/lib/ajax"
+Contact = require("./app/models/contact")
+
+spineGoose = require("./lib/mongoose-spine")
+spineGoose.mountModel(app, Contact)
   
 app.listen(3000)
 
