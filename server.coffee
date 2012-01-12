@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost/contacts')
 express = require('express')
 app = express.createServer()
 app.use(express.bodyParser())
+app.use(express.logger())
 
 # setting up Hem manually rather than use the server option
 # so we can add things to our express server
