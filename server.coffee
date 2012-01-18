@@ -17,14 +17,17 @@ app.get(hem.options.jsPath, hem.hemPackage().createServer())
 app.use(express.static("./public"))
 
 # mongoose-rest gives us restful route for our mongoose models
-mongooseRest = require("mongoose-rest")
-mongooseRest.use(app, mongoose)
+# mongooseRest = require("mongoose-rest")
+# mongooseRest.use(app, mongoose)
 
 require "spine/lib/ajax"
 Contact = require("./app/models/contact")
 
-spineGoose = require("./lib/mongoose-spine")
-spineGoose.mountModel(app, Contact)
-  
+SpineGoose = require("spinegoose")
+spineGoose = new SpineGoose
+  app: app
+  mongoose: mongoose
+  models: [Contact]
+
 app.listen(3000)
 

@@ -13,7 +13,7 @@
     "spine": "latest",
     "mongoose": "latest",
     "coffee-script": "latest",
-    "mongoose-rest": "https://github.com/gaslight/mongoose-rest/tarball/master",
-    "express": "latest"
+    "express": "latest",
+    "spinegoose": "*"
   }
 }
